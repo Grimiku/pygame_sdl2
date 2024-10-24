@@ -57,15 +57,17 @@ def quit(): # @ReservedAssignment
 cdef process_namehint(namehint):
     # Accepts "foo.png", ".png", or "png"
 
-    if not isinstance(namehint, bytes_):
-        namehint = namehint.encode("ascii", "replace")
-
     if not namehint:
         return b''
-
+    
     ext = os.path.splitext(namehint)[1]
+
+    if not isinstance(ext, bytes_):
+        ext = ext.encode("ascii", "replace")
+
     if not ext:
         ext = namehint
+
     if ext[0] == b'.':
         ext = ext[1:]
 
