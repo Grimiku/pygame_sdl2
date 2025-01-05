@@ -45,6 +45,8 @@ setup_env("CC")
 setup_env("LD")
 setup_env("CXX")
 
+SDL2_CONFIG_PATH = os.environ.get("VITASDK") + "arm-vita-eabi/bin/sdl2-config"
+
 temporary_package_data = [ ]
 
 if android or ios:
@@ -58,8 +60,8 @@ else:
         ])
 
     try:
-        parse_cflags([ "sh", "-c", "sdl2-config --cflags" ])
-        sdl_libs = parse_libs([ "sh", "-c", "sdl2-config --libs" ])
+        parse_cflags([ "sh", "-c", f"{SDL2_CONFIG_PATH} --cflags" ])
+        sdl_libs = parse_libs([ "sh", "-c", f"{SDL2_CONFIG_PATH} --libs" ])
     except:
 
         if not windows:
