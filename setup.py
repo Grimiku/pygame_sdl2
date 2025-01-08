@@ -45,7 +45,7 @@ setup_env("CC")
 setup_env("LD")
 setup_env("CXX")
 
-SDL2_CONFIG_PATH = os.environ.get("VITASDK") + "arm-vita-eabi/bin/sdl2-config"
+SDL2_CONFIG_PATH = os.environ.get("VITASDK") + "/arm-vita-eabi/bin/sdl2-config"
 
 temporary_package_data = [ ]
 
